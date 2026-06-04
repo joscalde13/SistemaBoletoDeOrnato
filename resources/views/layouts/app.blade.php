@@ -93,8 +93,8 @@
     <div class="hidden lg:fixed lg:inset-y-0 lg:z-50 lg:flex lg:w-72 lg:flex-col">
         <div class="flex grow flex-col gap-y-5 overflow-y-auto bg-gray-900 px-6 pb-4">
             <div class="flex h-16 shrink-0 items-center gap-3 mt-4">
-                <div class="h-8 w-8 bg-primary-500 rounded flex items-center justify-center text-white font-bold">BO</div>
-                <span class="text-white font-bold text-lg">Admin Ornato</span>
+                
+                <span class="text-white font-bold text-lg">Administración</span>
             </div>
             <nav class="flex flex-1 flex-col">
                 <ul role="list" class="flex flex-1 flex-col gap-y-7">

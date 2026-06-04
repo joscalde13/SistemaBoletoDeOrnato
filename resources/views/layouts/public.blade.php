@@ -15,7 +15,7 @@
                             <img src="{{ Storage::url($config->logo_path) }}" alt="Logo Municipal" class="h-12 w-auto object-contain transition-transform group-hover:scale-105">
                         @else
                             <div class="h-12 w-12 bg-primary-600 rounded-lg flex items-center justify-center text-white font-bold text-xl shadow-inner">
-                                BO
+                                GT
                             </div>
                         @endif
                         <div class="hidden sm:block">

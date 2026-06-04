@@ -277,3 +277,24 @@
     -webkit-backdrop-filter: blur(10px);
     border: 1px solid rgba(255, 255, 255, 0.2);
 }
+
+/* Flux UI Inputs */
+[data-flux-field] input,
+[data-flux-field] textarea,
+[data-flux-field] select {
+    background-color: #18181b !important;
+    color: #ffffff !important;
+    border-color: #3f3f46 !important;
+}
+
+[data-flux-field] input::placeholder,
+[data-flux-field] textarea::placeholder {
+    color: #a1a1aa !important;
+}
+
+[data-flux-field] input:focus,
+[data-flux-field] textarea:focus,
+[data-flux-field] select:focus {
+    background-color: #18181b !important;
+    color: #ffffff !important;
+}

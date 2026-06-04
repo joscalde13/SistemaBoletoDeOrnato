@@ -20,15 +20,7 @@
                     <label for="buscar" class="form-label text-xs">Buscar (DPI, Nombre o No. Boleto)</label>
                     <input type="text" name="buscar" id="buscar" value="{{ request('buscar') }}" class="form-input py-2" placeholder="Ej. 1234567890123">
                 </div>
-                <div class="w-full md:w-48">
-                    <label for="estado" class="form-label text-xs">Estado</label>
-                    <select name="estado" id="estado" class="form-select py-2">
-                        <option value="">Todos los estados</option>
-                        <option value="pagado" {{ request('estado') == 'pagado' ? 'selected' : '' }}>Pagado</option>
-                        <option value="pendiente" {{ request('estado') == 'pendiente' ? 'selected' : '' }}>Pendiente</option>
-                        <option value="anulado" {{ request('estado') == 'anulado' ? 'selected' : '' }}>Anulado</option>
-                    </select>
-                </div>
+               
                 <div class="flex gap-2 w-full md:w-auto">
                     <button type="submit" class="btn-primary py-2 w-full md:w-auto">Filtrar</button>
                     @if(request()->hasAny(['buscar', 'estado']))
@@ -50,7 +42,7 @@
                         <th>DPI</th>
                         <th>Monto</th>
                         <th>Fecha Emisión</th>
-                        <th>Estado</th>
+                      
                         <th class="text-right">Acciones</th>
                     </tr>
                 </thead>
@@ -62,14 +54,10 @@
                             <td class="text-gray-500">{{ $boleto->contribuyente->dpi }}</td>
                             <td class="font-semibold text-gray-900">Q {{ number_format($boleto->monto, 2) }}</td>
                             <td class="text-gray-500 text-sm">{{ $boleto->fecha_emision->format('d/m/Y') }}</td>
-                            <td>
-                                <span class="badge {{ $boleto->estado->claseCss() }}">
-                                    {{ $boleto->estado->etiqueta() }}
-                                </span>
-                            </td>
+                            
                             <td class="text-right space-x-2">
                                 <a href="{{ route('admin.boletos.show', $boleto) }}" class="text-primary-600 hover:text-primary-900 font-medium text-sm">Ver</a>
-                                @if($boleto->estaPagado())
+                                @if($boleto)
                                     <span class="text-gray-300">|</span>
                                     <a href="{{ route('admin.boletos.pdf', $boleto) }}" class="text-green-600 hover:text-green-900 font-medium text-sm">PDF</a>
                                 @endif

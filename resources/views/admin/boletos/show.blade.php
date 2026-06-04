@@ -8,21 +8,14 @@
             </a>
             <h1 class="text-2xl font-bold text-gray-900">Detalle de Boleto <span class="text-primary-600">#{{ $boleto->numero_boleto }}</span></h1>
         </div>
-        <div class="flex gap-2">
-            @if($boleto->estaPagado())
-                <a href="{{ route('admin.boletos.pdf', $boleto) }}" class="btn-success">
-                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
-                    Descargar PDF
-                </a>
-            @endif
-            
-            @if(!$boleto->estaAnulado())
-                <button type="button" @click="$dispatch('open-modal', 'confirmar-anulacion')" class="btn-danger">
-                    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-3L13.732 4c-.77-1.333-2.694-1.333-3.464 0L3.34 16c-.77 1.333.192 3 1.732 3z"></path></svg>
-                    Anular Boleto
-                </button>
-            @endif
-        </div>
+        <a href="{{ route('admin.boletos.pdf', $boleto) }}" class="btn-success">
+    <svg class="w-4 h-4 mr-1.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2"
+              d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4">
+        </path>
+    </svg>
+    Descargar PDF
+</a>
     </div>
 
     <div class="grid grid-cols-1 lg:grid-cols-3 gap-6">
@@ -31,7 +24,7 @@
             <div class="card">
                 <div class="card-header flex justify-between items-center">
                     <h3 class="font-bold text-gray-800">Información del Documento</h3>
-                    <span class="badge {{ $boleto->estado->claseCss() }} text-sm px-3 py-1">{{ mb_strtoupper($boleto->estado->etiqueta()) }}</span>
+                    
                 </div>
                 <div class="card-body">
                     <dl class="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-6">
@@ -117,7 +110,7 @@
                         </div>
                     </dl>
 
-                    <div class="mt-6 pt-4 border-t border-gray-100">
+                    <div class="mt-6 pt-4 ">
                         <a href="{{ route('admin.contribuyentes.show', $boleto->contribuyente) }}" class="text-primary-600 hover:text-primary-800 text-sm font-medium flex items-center">
                             Ver perfil completo
                             <svg class="w-4 h-4 ml-1" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>
@@ -127,11 +120,7 @@
             </div>
             
             <div class="card mt-6">
-                <div class="card-body text-center">
-                    <p class="text-xs text-gray-500 mb-2">Código de Verificación QR</p>
-                    <p class="text-xs font-mono bg-gray-100 p-2 rounded break-all">{{ $boleto->codigo_verificacion }}</p>
-                    <a href="{{ route('boleto.verificar', $boleto->codigo_verificacion) }}" target="_blank" class="text-sm text-primary-600 hover:underline mt-2 inline-block">Probar vista de validación</a>
-                </div>
+              
             </div>
         </div>
     </div>
